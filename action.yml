@@ -1,0 +1,5 @@
+name: 'Internal App Sharing'
+description: 'Upload aab/apk to Internal App Sharing on Play Console'
+runs:
+  using: 'node12'
+  main: 'lib/index.js'
