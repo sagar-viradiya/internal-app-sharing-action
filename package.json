@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/sagar-viradiya/internal-app-sharing-action/issues"
   },
-  "homepage": "https://github.com/sagar-viradiya/internal-app-sharing-action#readme"
+  "homepage": "https://github.com/sagar-viradiya/internal-app-sharing-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4"
+  }
 }
