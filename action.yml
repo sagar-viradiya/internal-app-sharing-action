@@ -1,5 +1,18 @@
 name: 'Internal App Sharing'
 description: 'Upload aab/apk to Internal App Sharing on Play Console'
+inputs:
+  auth_server:
+    description: 'Token uri from service account json'
+    required: true 
+  auth_email:
+    description: 'Client email from service account json'
+    required: true
+  auth_key:
+    description: 'Auth key from service account json'
+    required: true
+output:
+  url:
+    description: 'Link to access app on play store'   
 runs:
   using: 'node12'
   main: 'lib/index.js'
