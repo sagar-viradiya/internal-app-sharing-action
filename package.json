@@ -2,7 +2,7 @@
   "name": "internal-app-sharing-action",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/main.js",
   "directories": {
     "lib": "lib"
   },
