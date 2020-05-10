@@ -10,6 +10,9 @@ inputs:
   auth_key:
     description: 'Auth key from service account json'
     required: true
+  path:
+    description: 'File path to aab/apk'  
+    required: true
 output:
   url:
     description: 'Link to access app on play store'   
