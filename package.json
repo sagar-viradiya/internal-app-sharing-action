@@ -2,12 +2,13 @@
   "name": "internal-app-sharing-action",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/main.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "homepage": "https://github.com/sagar-viradiya/internal-app-sharing-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.4"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
   }
 }
