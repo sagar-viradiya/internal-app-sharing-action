@@ -4,10 +4,12 @@ import * as jwt from './jwt'
 const AuthServerUrlPropertyName = "auth_server";
 const AuthEmailPropertyName = "auth_email";
 const AuthKeyPropertyName = "auth_key";
+const APKPathPropertyName = "path";
 
 let authServerUrl: string | undefined;
 let authEmail: string | undefined;
 let authKey: string | undefined;
+let apkPath: String | undefined;
 
 function validateInput() {
     let errorMessage: string = "";
@@ -17,6 +19,8 @@ function validateInput() {
         errorMessage = `Missing ${AuthEmailPropertyName} in action inputs`;
     } else if (!authKey) {
         errorMessage = `Missing ${AuthKeyPropertyName} in action inputs`;
+    } else if (!apkPath) {
+        errorMessage = `Missing ${APKPathPropertyName} in action inputs`;
     }
 
     if (errorMessage) {
@@ -29,6 +33,7 @@ function main(): string {
     authServerUrl = core.getInput(AuthServerUrlPropertyName);
     authEmail = core.getInput(AuthEmailPropertyName);
     authKey = core.getInput(AuthKeyPropertyName);
+    apkPath = core.getInput(APKPathPropertyName);
     validateInput();
 
     //TODO : Call for jwt token
