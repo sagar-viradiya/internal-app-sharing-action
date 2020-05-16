@@ -13,6 +13,9 @@ inputs:
   path:
     description: 'File path to aab/apk'  
     required: true
+  package_name:
+    description: 'Package name set for the application'
+    required: true
 output:
   url:
     description: 'Link to access app on play store'   
