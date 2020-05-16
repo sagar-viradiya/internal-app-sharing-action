@@ -20,39 +20,35 @@ let apkPath: string | undefined;
 let aabPath: string | undefined;
 
 /**
- * This function 
+ * This function is to make sure that the action receives valid inputs. For example it ensures that either apkPath or aabPath is provided.
+ * @throws {Error} with an appropriate message depending on what input is missing
  */
-function validateInputs() {
-    if (!serviceAccountJsonRaw) {
-        throw new Error(`You must provide '${serviceJsonPropertyName}' to use this action`);
-    }
-
-    if (!packageName) {
-        throw new Error(`You must provide '${packageNamePropertyName}' to use this action`);
-    }
+export function getAndValidateInputs() {
+    serviceAccountJsonRaw = core.getInput(serviceJsonPropertyName, { required: true });
+    packageName = core.getInput(packageNamePropertyName, { required: true });
+    apkPath = core.getInput(apkPathPropertyName, { required: false });
+    aabPath = core.getInput(aabPathPropertyName, { required: false });
 
     if (!apkPath && !aabPath) {
         throw new Error(`You must provide either '${apkPathPropertyName}' or '${aabPathPropertyName}' to use this action`)
     }
 }
 
-async function main(): Promise<any> {
-    serviceAccountJsonRaw = core.getInput(serviceJsonPropertyName, { required: true });
-    packageName = core.getInput(packageNamePropertyName, { required: true });
-    apkPath = core.getInput(apkPathPropertyName, { required: false });
-    aabPath = core.getInput(aabPathPropertyName, { required: false });
-
-    validateInputs();
-
+export function setGoogleCredentials() {
     if (serviceAccountJsonRaw) {
         const serviceAccountFile = "./serviceAccountJson.json";
         fs.writeFileSync(serviceAccountFile, serviceAccountJsonRaw, {
             encoding: 'utf8'
         });
 
-        // Insure that the api can find our service account credentials
-        core.exportVariable("GOOGLE_APPLICATION_CREDENTIALS", serviceAccountFile);
+        // Ensure that the api can find our service account credentials
+        core.exportVariable("GOOGLE_APPLICATION_CREDENTIALS", fs.readFileSync(serviceAccountFile, 'utf-8'));
     }
+}
+
+async function main(): Promise<any> {
+    getAndValidateInputs();
+    setGoogleCredentials();
 
     // Acquire an auth client, and bind it to all future calls
     const authClient = await auth.getClient();
@@ -60,7 +56,7 @@ async function main(): Promise<any> {
         auth: authClient,
     });
 
-    let res;
+    let res: any; // TODO: add a type to this
     if(apkPath) {
         res = await androidpublisher.internalappsharingartifacts.uploadapk({
             packageName: packageName,
@@ -69,7 +65,7 @@ async function main(): Promise<any> {
                 body: fs.createReadStream(apkPath)
             }
         })
-    } else {
+    } else if (aabPath) {
         res = await androidpublisher.internalappsharingartifacts.uploadbundle({
             packageName: packageName,
             media: {
@@ -81,8 +77,8 @@ async function main(): Promise<any> {
     return res.data;
 }
 
-main().then((url) => {
-    core.setOutput("url", url)
+main().then((data) => {
+    core.setOutput("url", data)
 }).catch ((e) => {
     core.setFailed(e.message)
 })
