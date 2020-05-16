@@ -22,9 +22,11 @@
   },
   "homepage": "https://github.com/sagar-viradiya/internal-app-sharing-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.4"
+    "@actions/core": "^1.2.4",
+    "googleapis": "^51.0.0"
   },
   "devDependencies": {
+    "@types/node": "^14.0.1",
     "typescript": "3.8.3"
   }
 }

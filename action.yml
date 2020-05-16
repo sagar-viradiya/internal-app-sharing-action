@@ -1,15 +1,18 @@
 name: 'Internal App Sharing'
 description: 'Upload aab/apk to Internal App Sharing on Play Console'
 inputs:
-  auth_server:
-    description: 'Token uri from service account json'
+  serviceAccountJsonPlainText:
+    description: 'The service account json plain text private key file to authorize the upload request'
     required: true 
-  auth_email:
-    description: 'Client email from service account json'
+  packageName:
+    description: 'Package name of the application'
     required: true
-  auth_key:
-    description: 'Auth key from service account json'
-    required: true
+  apkReleaseFile:
+    description: '.apk file path'
+    required: false
+  aabReleaseFile:
+    description: '.aab file path'
+    required: false
 output:
   url:
     description: 'Link to access app on play store'   
