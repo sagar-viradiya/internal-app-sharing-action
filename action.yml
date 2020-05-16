@@ -7,10 +7,10 @@ inputs:
   packageName:
     description: 'Package name of the application'
     required: true
-  apkReleaseFile:
+  apkFilePath:
     description: '.apk file path'
     required: false
-  aabReleaseFile:
+  aabFilePath:
     description: '.aab file path'
     required: false
 output:
