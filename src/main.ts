@@ -24,18 +24,24 @@ let aabPath: string | undefined;
  * @throws {Error} with an appropriate message depending on what input is missing
  */
 export function getAndValidateInputs() {
+    // Required variables are automatically validated by actions, if missing getInput will throw an error
     serviceAccountJsonRaw = core.getInput(serviceJsonPropertyName, { required: true });
     packageName = core.getInput(packageNamePropertyName, { required: true });
     apkPath = core.getInput(apkPathPropertyName, { required: false });
     aabPath = core.getInput(aabPathPropertyName, { required: false });
 
+    // Any optional inputs should be validated here
     if (!apkPath && !aabPath) {
         throw new Error(`You must provide either '${apkPathPropertyName}' or '${aabPathPropertyName}' to use this action`)
     }
 }
 
+/**
+ * This function uses the raw json passed by the user and sets it to the process environment variables.
+ */
 export function setGoogleCredentials() {
     if (serviceAccountJsonRaw) {
+        // TODO: do we need to do this? We can put the json string directly in the environment variables
         const serviceAccountFile = "./serviceAccountJson.json";
         fs.writeFileSync(serviceAccountFile, serviceAccountJsonRaw, {
             encoding: 'utf8'
@@ -56,6 +62,7 @@ async function main(): Promise<any> {
         auth: authClient,
     });
 
+    // TODO: does this block need to be tested?
     let res: any; // TODO: add a type to this
     if(apkPath) {
         res = await androidpublisher.internalappsharingartifacts.uploadapk({
