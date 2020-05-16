@@ -7,10 +7,11 @@ const auth = new google.auth.GoogleAuth({
     scopes: ['https://www.googleapis.com/auth/androidpublisher']
 });
 
-async function main(): Promise<string> {
+async function main(): Promise<any> {
     const serviceAccountJsonRaw = core.getInput('serviceAccountJson', { required: true });
-    const packageName = core.getInput('packageName', { required: true });
-    const releaseFile = core.getInput('releaseFile', { required: true });
+    const packageName = core.getInput('apkPackageName', { required: true });
+    const apkReleaseFile = core.getInput('apkReleaseFile', { required: false });
+    const aabReleaseFile = core.getInput('aabReleaseFile', { required: false });
 
     if (serviceAccountJsonRaw) {
         const serviceAccountFile = "./serviceAccountJson.json";
@@ -30,22 +31,38 @@ async function main(): Promise<string> {
         core.setFailed("Please provide package name through packageName input.");
     }
 
-    if(!releaseFile) {
+    if(!apkReleaseFile && !aabReleaseFile) {
         console.log("Release file path is not provided.");
-        core.setFailed("Please provide release file path through releaseFile input");
+        core.setFailed("Please provide either apk or aab release file path through apkReleaseFile or aabReleaseFile input");
     }
 
     // Acquire an auth client, and bind it to all future calls
     const authClient = await auth.getClient();
     google.options('auth', authClient);
 
-    //TODO Upload bundle
-
-    return "";
+    let res;
+    if(apkReleaseFile) {
+        res = androidpublisher.internalappsharingartifacts.uploadapk({
+            packageName: packageName,
+            media: {
+                mimeType: 'application/octet-stream',
+                body: fs.createReadStream(apkReleaseFile)
+            }
+        })
+    } else {
+        res = androidpublisher.internalappsharingartifacts.uploadaab({
+            packageName: packageName,
+            media: {
+                mimeType: 'application/octet-stream',
+                body: fs.createReadStream(aabReleaseFile)
+            }
+        })
+    }
+    return res.data;
 }
 
-main().then( (url)=> {
+main().then((url) => {
     core.setOutput("url", url)
-}).catch ((e)=> {
+}).catch ((e) => {
     core.setFailed(e.message)
 })
