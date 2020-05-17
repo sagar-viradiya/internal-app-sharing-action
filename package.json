@@ -7,8 +7,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc -p tsconfig.json"
+    "test": "npm run build && npx jest",
+    "build": "npx tsc -p tsconfig.json",
+    "test-watch": "npm run build && npx jest --watch",
+    "build-watch": "npx tsc -p tsconfig.json --watch"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,8 @@
   },
   "devDependencies": {
     "@types/node": "^14.0.1",
+    "jest": "^26.0.1",
+    "jest-when": "^2.7.1",
     "typescript": "3.8.3"
   }
 }
