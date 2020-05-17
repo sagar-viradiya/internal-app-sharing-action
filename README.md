@@ -36,5 +36,5 @@ uses: sagar-viradiya/internal-app-sharing-action
 with:
   serviceAccountJsonPlainText: ${{ secrets.<your-github-service-acc-josn-secret> }}
   packageName: <your-package-name>
-  apkFilFilePath: <path-to-apk>
+  apkFilePath: <path-to-apk>
 ```
