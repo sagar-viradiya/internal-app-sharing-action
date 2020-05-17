@@ -15,3 +15,26 @@ Path to your application's apk file.
 ### `aabFilePath`
 Path to your application's aab file.
 
+## Output
+
+### `url`
+URL to access app on play store.
+
+
+## Sample for uploading aab
+```yml
+uses: sagar-viradiya/internal-app-sharing-action
+with:
+  serviceAccountJsonPlainText: ${{ Secrets.<your-github-service-acc-josn-secret> }}
+  packageName: <your-package-name>
+  aabFilePath: <path-to-aab>
+```
+
+## Sample for uploading apk
+```yml
+uses: sagar-viradiya/internal-app-sharing-action
+with:
+  serviceAccountJsonPlainText: ${{ Secrets.<your-github-service-acc-josn-secret> }}
+  packageName: <your-package-name>
+  apkFilFilePath: <path-to-apk>
+```
