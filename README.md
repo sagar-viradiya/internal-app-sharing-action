@@ -25,7 +25,7 @@ URL to access app on play store.
 ```yml
 uses: sagar-viradiya/internal-app-sharing-action
 with:
-  serviceAccountJsonPlainText: ${{ Secrets.<your-github-service-acc-josn-secret> }}
+  serviceAccountJsonPlainText: ${{ secrets.<your-github-service-acc-josn-secret> }}
   packageName: <your-package-name>
   aabFilePath: <path-to-aab>
 ```
@@ -34,7 +34,7 @@ with:
 ```yml
 uses: sagar-viradiya/internal-app-sharing-action
 with:
-  serviceAccountJsonPlainText: ${{ Secrets.<your-github-service-acc-josn-secret> }}
+  serviceAccountJsonPlainText: ${{ secrets.<your-github-service-acc-josn-secret> }}
   packageName: <your-package-name>
   apkFilFilePath: <path-to-apk>
 ```
