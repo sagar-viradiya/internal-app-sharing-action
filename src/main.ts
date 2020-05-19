@@ -85,7 +85,9 @@ async function main(): Promise<any> {
 }
 
 main().then((data) => {
-    core.setOutput("url", data)
+    core.setOutput("downloadUrl", data.downloadUrl)
+    core.setOutput("certificateFingerprint", data.certificateFingerprint)
+    core.setOutput("sha256", data.sha256)
 }).catch ((e) => {
     core.setFailed(e.message)
 })

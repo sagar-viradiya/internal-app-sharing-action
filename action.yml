@@ -13,9 +13,13 @@ inputs:
   aabFilePath:
     description: '.aab file path'
     required: false
-output:
-  url:
-    description: 'Link to access app on play store'   
+outputs:
+  downloadUrl:
+    description: 'The download URL generated for the uploaded artifact.'
+  certificateFingerprint:
+    description: 'The SHA256 fingerprint of the certificate used to signed the generated artifact.'
+  sha256:
+    description: 'The SHA-256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the sha256sum command.'       
 runs:
   using: 'node12'
   main: 'lib/index.js'
