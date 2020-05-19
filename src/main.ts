@@ -42,13 +42,13 @@ export function getAndValidateInputs() {
 export function setGoogleCredentials() {
     if (serviceAccountJsonRaw) {
         // TODO: do we need to do this? We can put the json string directly in the environment variables
-        const serviceAccountFile = "./serviceAccountJson.json";
+        const serviceAccountFile = "./serviceAccount.json";
         fs.writeFileSync(serviceAccountFile, serviceAccountJsonRaw, {
             encoding: 'utf8'
         });
 
         // Ensure that the api can find our service account credentials
-        core.exportVariable("GOOGLE_APPLICATION_CREDENTIALS", fs.readFileSync(serviceAccountFile, 'utf-8'));
+        core.exportVariable("GOOGLE_APPLICATION_CREDENTIALS", serviceAccountFile);
     }
 }
 
