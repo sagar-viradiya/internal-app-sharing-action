@@ -18,7 +18,7 @@ output:
     description: 'Link to access app on play store'   
 runs:
   using: 'node12'
-  main: 'lib/index.js'
+  main: 'dist/index.js'
 branding:
   icon: 'upload-cloud'  
   color: 'green'
