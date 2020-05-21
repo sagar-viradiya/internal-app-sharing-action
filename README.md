@@ -4,7 +4,7 @@ GitHub Action to upload aab/apk to Internal App Sharing on Play console.
 ## Inputs
 
 ### `serviceAccountJsonPlainText`
-**Required:** Service account JSON in plain text to authenticate upload request. Note that it should be in the plain text and not in actual JSON file format so we recommend to set it as a GitHub secret and then pass it to input.
+**Required:** Service account JSON in plain text to authenticate upload request. Note that it should be in the plain text and not in actual JSON file format so we recommend setting it as a GitHub secret and then pass it to input.
 
 ### `packageName`
 **Required:** Your application's package name(Application ID).
@@ -21,7 +21,7 @@ Path to your application's aab file.
 The download URL generated for the uploaded artifact.
 
 ### `certificateFingerprint`
-The SHA256 fingerprint of the certificate used to signed the generated artifact.
+The SHA256 fingerprint of the certificate used to sign the generated artifact.
 
 ### `sha256`
 The SHA-256 hash of the artifact.
