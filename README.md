@@ -15,7 +15,7 @@ Path to your application's apk file.
 ### `aabFilePath`
 Path to your application's aab file.
 
-## Output
+## Outputs
 
 ### `downloadUrl`
 The download URL generated for the uploaded artifact.
