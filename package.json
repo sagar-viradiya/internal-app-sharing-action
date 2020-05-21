@@ -10,7 +10,7 @@
     "test": "npm run build && npx jest",
     "build": "npx tsc -p tsconfig.json && ncc build",
     "test-watch": "npm run build && npx jest --watch",
-    "build-watch": "tsc -p tsconfig.json --watch && ncc build --watch"
+    "build-watch": "npx tsc -p tsconfig.json --watch && ncc build --watch"
   },
   "repository": {
     "type": "git",
