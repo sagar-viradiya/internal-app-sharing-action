@@ -31,7 +31,7 @@ The SHA-256 hash of the artifact.
 ```yml
 uses: sagar-viradiya/internal-app-sharing-action@v1
 with:
-  serviceAccountJsonPlainText: ${{ secrets.<your-github-service-acc-josn-secret> }}
+  serviceAccountJsonPlainText: ${{ secrets.<your-github-service-acc-json-secret> }}
   packageName: <your-package-name>
   aabFilePath: <path-to-aab>
 ```
@@ -40,7 +40,7 @@ with:
 ```yml
 uses: sagar-viradiya/internal-app-sharing-action@v1
 with:
-  serviceAccountJsonPlainText: ${{ secrets.<your-github-service-acc-josn-secret> }}
+  serviceAccountJsonPlainText: ${{ secrets.<your-github-service-acc-json-secret> }}
   packageName: <your-package-name>
   apkFilePath: <path-to-apk>
 ```
