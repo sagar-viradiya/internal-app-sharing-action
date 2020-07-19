@@ -8,9 +8,12 @@
   },
   "scripts": {
     "test": "npm run build && npx jest",
-    "build": "npx tsc -p tsconfig.json && ncc build",
+    "ncc:main": "rm dist/index.js || : && ncc build lib/main.js --out dist/index",
+    "ncc:cleanup": "rm dist/cleanup.js || : && ncc build lib/cleanup.js --out dist/cleanup",
+    "ncc:build": "npm run ncc:main && npm run ncc:cleanup",
+    "build": "npx tsc -p tsconfig.json && npm run ncc:build",
     "test-watch": "npm run build && npx jest --watch",
-    "build-watch": "npx tsc -p tsconfig.json --watch && ncc build --watch"
+    "build-watch": "npx tsc -p tsconfig.json --watch && ncc run ncc:build --watch"
   },
   "repository": {
     "type": "git",

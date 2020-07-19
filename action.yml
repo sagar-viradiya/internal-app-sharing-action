@@ -22,8 +22,8 @@ outputs:
     description: 'The SHA-256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the sha256sum command.'       
 runs:
   using: 'node12'
-  main: 'dist/index.js'
-  post: 'dist/cleanup.js'
+  main: 'dist/index/index.js'
+  post: 'dist/cleanup/index.js'
 branding:
   icon: 'upload-cloud'  
   color: 'green'
