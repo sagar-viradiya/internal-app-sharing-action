@@ -23,6 +23,7 @@ outputs:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+  post: 'dist/cleanup.js'
 branding:
   icon: 'upload-cloud'  
   color: 'green'
