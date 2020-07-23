@@ -40,7 +40,7 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(890);
+/******/ 		return __webpack_require__(102);
 /******/ 	};
 /******/
 /******/ 	// run startup
@@ -49,14 +49,7 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ 747:
-/***/ (function(module) {
-
-module.exports = require("fs");
-
-/***/ }),
-
-/***/ 890:
+/***/ 102:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -73,11 +66,19 @@ const fs = __importStar(__webpack_require__(747));
 const serviceAccountFile = "./serviceAccount.json";
 try {
     fs.unlinkSync(serviceAccountFile);
+    console.log("Service account JSON file deleted successfully");
 }
 catch (err) {
     console.log(err.message);
 }
 
+
+/***/ }),
+
+/***/ 747:
+/***/ (function(module) {
+
+module.exports = require("fs");
 
 /***/ })
 
