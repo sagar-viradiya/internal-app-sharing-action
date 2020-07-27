@@ -29,7 +29,7 @@ The SHA-256 hash of the artifact.
 
 ## Sample for uploading aab
 ```yml
-uses: sagar-viradiya/internal-app-sharing-action@v1.0.0
+uses: sagar-viradiya/internal-app-sharing-action@{latest_version}
 with:
   serviceAccountJsonPlainText: ${{ secrets.<your-github-service-acc-json-secret> }}
   packageName: <your-package-name>
@@ -38,7 +38,7 @@ with:
 
 ## Sample for uploading apk
 ```yml
-uses: sagar-viradiya/internal-app-sharing-action@v1.0.0
+uses: sagar-viradiya/internal-app-sharing-action@{latest_version}
 with:
   serviceAccountJsonPlainText: ${{ secrets.<your-github-service-acc-json-secret> }}
   packageName: <your-package-name>
