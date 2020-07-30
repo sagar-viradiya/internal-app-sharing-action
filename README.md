@@ -44,7 +44,7 @@ with:
   apkFilePath: <path-to-apk>
 ```
 
-> Action is taking care of deleting the Service Account JSON file it creates internally so be rest assured with your credentials getting compromised for any reason :slightly_smiling_face:.
+> Action is taking care of deleting the Service Account JSON file it creates internally so that it won't get compromised for any reason :slightly_smiling_face:.
 
 # License
 
