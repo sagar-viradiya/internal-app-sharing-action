@@ -26,7 +26,6 @@ The SHA256 fingerprint of the certificate used to sign the generated artifact.
 ### `sha256`
 The SHA-256 hash of the artifact.
 
-
 ## Sample for uploading aab
 ```yml
 uses: sagar-viradiya/internal-app-sharing-action@{latest_version}
@@ -44,6 +43,8 @@ with:
   packageName: <your-package-name>
   apkFilePath: <path-to-apk>
 ```
+
+> Action is taking care of deleting the Service Account JSON file it creates internally so that it won't get compromised for any reason :slightly_smiling_face:.
 
 # License
 
